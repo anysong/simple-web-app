@@ -12,7 +12,12 @@ gulp.task('watch-css', () => {
         gulp.start('less-detail');
     })
 })
+gulp.task('watch-html', () => {
+    watch('./src/views/*.html', () => {
+        gulp.start('html');
+    })
+})
 
 gulp.task('watch', () => {
-    sequence('clean', ['less', 'babel'], ['watch-js', 'watch-css'], () => {})
+    sequence('clean', ['less', 'babel', 'html', 'img'], ['watch-js', 'watch-css', 'watch-html'], () => {})
 })
